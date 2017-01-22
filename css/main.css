@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.hide {
+	display: none;
+}
+
+#top-menu {
+	margin-bottom: 40px;
+}
+
+ul.sticky_notes, ul.sticky_notes li{
+	list-style:none;
+}
+body{
+background-image:url('bg.png');
+
+}
+h2{
+	margin-left: 10px;
+	color:blue;
+}
+ul.sticky_notes{
+	margin: 0;
+}
+
+ul.sticky_notes li a {
+	text-decoration: none;
+	color: #000;
+	background: #ffc;
+	display: block;
+	height: 150px;
+	width: 195px;
+	padding: 10px;
+
+	-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+	box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+
+	-webkit-transition: -webkit-transform .15s linear;
+	-moz-transition: -moz-transform .15s linear;
+	-o-transition: -o-transform .15s linear;
+	-ms-transition: -ms-transform .15s linear;
+	transition: transform .15s linear;
+}
+
+
+ul.sticky_notes li{
+	margin: 20px 10px 40px 10px;
+	float: left;
+}
+
+ul.sticky_notes li p{
+	font-family: "Reenie Beanie",arial,sans-serif;
+ 	font-size: 180%;
+}
+
+ul.sticky_notes li a {
+	-webkit-transform: rotate(-6deg);
+	-moz-transform: rotate(-6deg);
+	-o-transform: rotate(-6deg);
+	-ms-transform: rotate(-6deg);
+	transform: rotate(-6deg);
+}
+
+ul.sticky_notes li:nth-child(even) a {
+	-webkit-transform: rotate(4deg);
+	-moz-transform: rotate(4deg);
+	-o-transform: rotate(4deg);
+	-ms-transform: rotate(4deg);
+	transform: rotate(4deg);
+	background:#cfc;
+	position: relative;
+	top: 5px;
+}
+
+ul.sticky_notes li:nth-child(3n) a {
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+	-o-transform: rotate(-3deg);
+	-ms-transform: rotate(-3deg);
+	transform: rotate(-3deg);
+	background:#ccf;
+	position: relative;
+	top: -5px;
+}
+
+ul.sticky_notes li:nth-child(5n) a {
+	-webkit-transform: rotate(5deg);
+	-moz-transform: rotate(5deg);
+	-o-transform: rotate(5deg);
+	-ms-transform: rotate(5deg);
+	transform: rotate(5deg);
+	position: relative;
+	top: -10px;
+}
+
+
+ul.sticky_notes li a:hover,ul.sticky_notes li a:focus {
+	-webkit-box-shadow: 10px 10px 7px rgba(20,20,20,.7);
+	box-shadow: 10px 10px 7px rgba(20,20,20,.7);
+	-webkit-transform: scale(1.25);
+	-moz-transform: scale(1.25);
+	-o-transform: scale(1.25);
+	-ms-transform: scale(1.25);
+	transform: scale(1.25);
+	position: relative;
+	z-index: 5;
+}
+
+.alert-invitee {
+	padding: 2px 30px 2px 10px;
+	margin-right: 20px;
+	margin-bottom : 5px;
+}
+
+.changeable:hover {
+    cursor:pointer;
+}
+.no-reservation {
+    background-color: #ddd;
+    width:32px;
+}
+.create-account{
+text-align: center;
+}
+.going {
+    width:32px;
+    background: #8f8;
+	text-align: center;
+}
+
+.not-going {
+    width:32px;
+    background: #f88;
+	text-align: center;
+}
+
+.not-sure {
+    width:32px;
+    background-color: #88f;
+	text-align: center;
+}
+
+.reservation-date {
+    font-weight: normal;
+    font-size: 0.9em;
+    padding:4px 8px;
+}
+.reservation-hour {
+    font-weight: normal;
+    font-size: 0.9em;
+}
