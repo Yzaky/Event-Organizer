@@ -23,7 +23,7 @@ $user = $_SESSION['user'];
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>MeetingSet - Admin</title>
+        <title>Dashboard</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -46,29 +46,27 @@ $user = $_SESSION['user'];
                 <div class="span6">
                     <div class="btn-group">
                         <a class="btn" href="index.php">
-                            MeetingSet
+                            Back
                         </a>
                         <a class="btn btn-success" href="index.php?p=new_event">
-                            Nouveau
+                            New Event
                         </a>
-                        <?php if ($user->is_admin): ?>
-                            <a href="admin.php" class="btn btn-info">Admin</a>
-                        <?php endif ?>
+                       
                     </div>
                 </div>
                 <div class="span6">
                     <h5 class="pull-right">
                         <?php echo $user->firstname ?> <?php echo $user->lastname ?>
-                        (<a href="logout.php">Déconnexion</a>)
+                        (<a href="logout.php">Disconnect</a>)
                     </h5>
                 </div>
             </div>
             <?php if (! $user->is_admin): ?>
 	    		<div style="margin-top: 40px" class="span6 offset3">
 	    			<div class="alert alert-danger" style="text-align: center">
-	    				<h2>Autorisation refusé</h2>
+	    				<h2>Access refused</h2>
 	    				<h5>
-	    					Votre n'avez pas l'autorisation de se connecter a cette page, vous n'etes pas loger uvec un compte Admin!! 
+	    					You are not an Admin to have access to this page.
 	    				</h5>
 	    			</div>
 	    		</div>
@@ -80,8 +78,8 @@ $user = $_SESSION['user'];
         	<div class="row">
         		<div class="span12">
         			<ul class="nav nav-pills pull-right">
-		        		<li <?php echo ($menu == 1) ? 'class="active"' : '' ?>><a href="admin.php">Événements</a></li>
-		        		<li <?php echo ($menu == 2) ? 'class="active"' : '' ?>><a href="admin.php?p=users">Utilisateurs</a></li>
+		        		<li <?php echo ($menu == 1) ? 'class="active"' : '' ?>><a href="admin.php">Events</a></li>
+		        		<li <?php echo ($menu == 2) ? 'class="active"' : '' ?>><a href="admin.php?p=users">Users</a></li>
 		        	</ul>
         		</div>
         		<div class="span12">

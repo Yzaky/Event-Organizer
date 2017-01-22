@@ -9,7 +9,7 @@ $users = User::find_all();
 		</div>
 		<div class="span12">
 			<form onsubmit="return false" action="javascript:void(0)" class="form-horizontal pull-right" style="display: none" id="add-user-form">
-				<legend style="text-align: right">Nouvel usager</legend>
+				<legend style="text-align: right">Add New User</legend>
 
 				<div class="control-group">
 					<label for="email" class="control-label">E-mail</label>
@@ -19,35 +19,35 @@ $users = User::find_all();
 				</div><!-- End email -->
 
 				<div class="control-group">
-					<label for="firstname" class="control-label">Prénom</label>
+					<label for="firstname" class="control-label">First Name</label>
 					<div class="controls">
 						<input type="text" class="span2" id="firstname">
 					</div>
 				</div><!-- End firstname -->
 
 				<div class="control-group">
-					<label for="lastname" class="control-label">Nom de famille</label>
+					<label for="lastname" class="control-label">Last Name</label>
 					<div class="controls">
 						<input type="text" class="span2" id="lastname">
 					</div>
 				</div><!-- End lastname -->
 
 				<div class="control-group">
-					<label for="password" class="control-label">Mot de passe</label>
+					<label for="password" class="control-label">Password</label>
 					<div class="controls">
 						<input type="password" class="span2" id="password">
 					</div>
 				</div><!-- End password -->
 
 				<div class="control-group">
-					<label for="password2" class="control-label">Confirmation</label>
+					<label for="password2" class="control-label">Confirm</label>
 					<div class="controls">
 						<input type="password" class="span2" id="password2">
 					</div>
 				</div><!-- End password2 -->
 
 				<div class="form-actions">
-				  	<button type="submit" class="btn btn-primary" id="save-user">Ajouter</button>
+				  	<button type="submit" class="btn btn-primary" id="save-user">Add User!</button>
 				  	<img style="margin-left: 10px" class="hide" src="img/ajax-loader.gif" id="loader" alt="Loader">
 				</div>
 			</form>
@@ -56,9 +56,9 @@ $users = User::find_all();
 			<table id="users-table" class="table table-hovered">
 				<thead>
 					<tr>
-						<th>Nom</th>
+						<th>Name</th>
 						<th>E-mail</th>
-						<th style="text-align: right">Nombre d'événements organisés</th>
+						<th style="text-align: right">Number of events organised</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -69,7 +69,6 @@ $users = User::find_all();
 							<td class="email"><?php echo $user->email ?></td>
 							<td class="events_count" style="text-align: right"><?php echo $user->count_events() ?></td>
 							<td style="text-align: right"><a class="btn btn-danger btn-mini delete-user-button">&times;</a></td>
-							<td style="text-align: right"><a class="btn btn-warning btn-mini edit-user-button">&times;</a></td>
 						</tr>
 					<?php endforeach ?>
 				</tbody>
@@ -84,16 +83,8 @@ $users = User::find_all();
 			var user_name = $(this).parent().siblings('.name');
 			var user_row = $(this).parent().parent();
 
-			if(confirm('Voulez-vous vraiment effacer l\'usager: ' + user_name.text())) {
+			if(confirm('Are you sure you want to delete "' + user_name.text()+'"?')) {
 				delete_user(user_row);
-			}
-		});
-		$('.edit-user-button').on('click', function() {
-			var user_name = $(this).parent().siblings('.name');
-			
-
-			if(confirm('Vous pouvez tout simplementsupprimmer et  creer de nouveau l\'usager: ' + user_name.text())) {
-				
 			}
 		});
 
@@ -123,7 +114,7 @@ $users = User::find_all();
 					if(msg) {
 						var message = '<div class="alert alert-warning"> \
 								<button type="button" class="close" data-dismiss="alert">&times;</button> \
-								L\'usager ' + user_row.children('.name').text() + ' a été supprimé!</div>';
+								User ' + user_row.children('.name').text() + ' was deleted!</div>';
 
 						$('#users-table').parent()
 							.prepend(message);
@@ -143,38 +134,38 @@ $users = User::find_all();
 			var password = $('#password').val();
 			var password2 = $('#password2').val();
 
-						/* verification  e-mail*/
+						/* Email-Verification*/
             if(email === "")
-                return alert('Le champs email doit être remplie');
+                return alert('Invalid Email');
 if ( !(/^[a-z0-9]+_?[a-z0-9]+@[a-z]+.[a-z]{2,3}$/.test(email)))
 
-                return alert('Le format pour le courriel est : myname@domain.com / nom_prenom@domain.com / me23@yahoo.com');
+                return alert('Email format should be as follows: myname@domain.com / nom_prenom@domain.com / me23@yahoo.com');
             
-            /* verification prenom */
+            /* First-Name Verification*/
              if(firstname === "")
-                return alert('Le champs prenom ne doit pas être vide');
+                return alert('Invalid First Name');
             if(/[0-9]/.test(firstname))
-                return alert('Le prenom ne peut pas contenir des chiffres');
+                return alert('First name can not contain numbers');
                 
-            /* verification nom */
+            /* Last Name Verification*/
          if(lastname === "")
-                return alert('Le champs nom ne doit pas être vide');
+                return alert('Invalid Last Name');
         if(/[0-9]/.test(lastname))
-                return alert('Le nom ne peut pas contenir des chiffres');
+                return alert('Last name can not contain numbers');
                 
-            /* verification du password   */          
+            /* password verification  */          
        if(password === ""){                
-                return alert('Le mot de passe ne peut pas être vide');
+                return alert('Invalid Password');
             }
             if(password2 === ""){                
-                return alert('Le mot de passe ne peut pas être vide');
+                return alert('Please confirm your password');
             }
 
                 
        if(password != password2){
                 alert(password);
                 alert(password2);
-                 return alert('La confirmation ne correspond pas au mot de passe');
+                 return alert('Password confirmation did not match.');
                 }
                
          
@@ -199,7 +190,7 @@ if ( !(/^[a-z0-9]+_?[a-z0-9]+@[a-z]+.[a-z]{2,3}$/.test(email)))
 
 					var message = '<div class="alert alert-success"> \
 								<button type="button" class="close" data-dismiss="alert">&times;</button> \
-								L\'usager ' + data.firstname + ' ' + data.lastname + ' a été ajouté!</div>';
+								User ' + data.firstname + ' ' + data.lastname + ' was added successfully!</div>';
 
 					var newRow = '<tr data-id="'+user_id+'" class="user"> \
 									<td class="name">'+data.firstname+' '+data.lastname+'</td> \

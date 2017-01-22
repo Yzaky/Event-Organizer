@@ -39,11 +39,11 @@ function display_square($reservations, $event_date_id, $date, $hour, $input_fiel
 
 $event = Event::find($_GET["id"]);
 if (!$event) {
-    die("Cet événement n'existe pas.");
+    die("Event does not exist.");
 }
 
 if (!$event->userIsInvited($user->id)) {
-    die("Vous n'êtes pas invité à cet événement.");
+    die("You are not invited for this event.");
 }
 
 
@@ -80,11 +80,11 @@ $c = count($event_dates);
 <div class="container">
 
 	<div class="row">
-    <h1><?php echo $event->name ?> (<?php echo $event->duration ?> heure<?php echo $event->duration > 1 ? "s" : "" ?>)</h1>
-    <h3>Organisé par: <?php echo $event->organizer_name ?></h3>
+    <h1><?php echo $event->name ?> (<?php echo $event->duration ?> Hour<?php echo $event->duration > 1 ? "s" : "" ?>)</h1>
+    <h3>Created by: <?php echo $event->organizer_name ?></h3>
 
         <form id="new_event_form" class="form-horizontal" method="post" action="">
-	        <legend>Mes disponibilités</legend>
+	        <legend>Availability</legend>
 
             <table id="my-availabilities" border="1">
                 <tr>
@@ -134,15 +134,15 @@ $c = count($event_dates);
 
                        <input type="submit" class="btn btn-success" value="Enregistrer" />
                        <input type="button" class="btn btn-warning" value="Modifier Event" onClick=" modifEvt('<?php echo $sup?>')"/>
-            <input type="button" class="btn btn-danger" value="Supprimer Event" onClick=" delEvt('<?php echo $sup?>')"/>
+                 <input type="button" class="btn btn-danger" value="Supprimer Event" onClick=" delEvt('<?php echo $sup?>')"/>
             
             
         </form>
 
-        <h1>Autres invités</h1>
+        <h1>Invited People</h1>
         <?php if ($event->type == 'private'): ?>
         <div class="alert">
-            Cet événement est privé, vous ne verrez donc pas le nom des autres invités.
+           Sorry this event is private, you can not see the invited people.
         </div>
         <?php endif ?>
         <?php foreach ($others_reservations as $invitee_name => $reservations): ?>
@@ -191,7 +191,7 @@ function modifEvt(id){
        var data={event_id:id};
 
     $("#modifEvt").show("slow");
-    $("#leg").text("Modifier Evenement");
+    $("#leg").text("Modify the event.");
     $("#save-event").html('Mettre a jour');
     var titreR='<?php echo $event->name;?>';
     var descR='<?php echo $event->description;?>';
@@ -213,7 +213,7 @@ function modifEvt(id){
     $("#description").attr('value', '<?php echo $event->description;?>');
     $("#duration").attr('value', '<?php echo $event->duration;?>');
     $("#type").attr('value', '<?php echo $event->type;?>');
-    alert("Vous ne pouvez pas mettre a jour un evenement dont vous n\'etes pas l\'organisateur!!");
+    alert("you can not edit an event that you did not create.");
 }
     }
 function delEvt(id ){
@@ -233,7 +233,7 @@ if(id!="no"){
 
                        var msg="tres bien";
                     $('#new_event_form').parent()
-                           .prepend('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>L\'événement n\'existe plus dans la bas, car il etait supprimer avec succès</div>');
+                           .prepend('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button> Event does not exist because it may have been deleted.</div>');
                           location.href = "index.php"                }
                 }
             });
@@ -241,7 +241,7 @@ if(id!="no"){
 
 
 else{
-    alert("Vous ne pouvez pas supprimer un evenement dont vous etes pas l\'o rganisateur!!");
+    alert("You can not delete an event that you did not created.");
 }
     
 }

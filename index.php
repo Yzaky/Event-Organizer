@@ -1,4 +1,4 @@
-<?php 
+    <?php 
 require('bootstrap.php');
 
 // Redirect to login if not logged in
@@ -55,10 +55,10 @@ else {
                 <div class="span6">
                     <div class="btn-group">
                         <a class="btn" href="index.php">
-                            MeetingSet
+                            Event Organizer
                         </a>
                         <a class="btn btn-success" href="?p=new_event">
-                            Nouveau Evenement
+                            New Event
                         </a>
                         <?php if ($user->is_admin): ?>
 
@@ -70,7 +70,7 @@ else {
                 <div class="span6">
                     <h5 class="pull-right">
                         <?php echo $user->firstname ?> <?php echo $user->lastname ?>
-                        (<a href="logout.php">Déconnexion</a>)
+                        (<a href="logout.php">Disconnect</a>)
                     </h5>
                 </div>
             </div>

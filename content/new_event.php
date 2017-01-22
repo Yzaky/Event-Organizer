@@ -10,12 +10,12 @@ $all_users = __json_encode(User::find_all_names($user->id));
 			
 			<form id="new_event_form" class="form-horizontal" action"javascript:void(0);" onsubmit="return false">
 
-				<legend id="leg">Nouvel événement</legend>
+				<legend id="leg">New Event</legend>
 
 				<div class="control-group">
-					<label for="title" class="control-label">Titre</label>
+					<label for="title" class="control-label">Title</label>
 					<div class="controls">
-						<input name="title" type="text" placeholder="Titre" id="title">
+						<input name="title" type="text" placeholder="Title" id="title">
 					</div>
 				</div><!-- End Title -->
 
@@ -27,7 +27,7 @@ $all_users = __json_encode(User::find_all_names($user->id));
 				</div><!-- End description -->
 
 				<div class="control-group">
-					<label for="duration" class="control-label">Durée (heures)</label>
+					<label for="duration" class="control-label">Duration</label>
 					<div class="controls">
 						<select class="span1" name="duration" id="duration">
 							<?php for($i = 1; $i <= 12; $i++): ?>
@@ -41,17 +41,17 @@ $all_users = __json_encode(User::find_all_names($user->id));
 					<label for="type" class="control-label">Type</label>
 					<div class="controls">
 						<select class="span2" name="type" id="type">
-							<option value="public">publique</option>
-							<option value="private">privé</option>
+							<option value="public">Public</option>
+							<option value="private">Private</option>
 						</select>
 					</div>
 				</div><!-- End type -->
 
 				<div class="control-group">
-					<label for="invitee" class="control-label">Invités</label>
+					<label for="invitee" class="control-label">Invite</label>
 					<div id="invitee-group" class="controls">
 						<div class="input-append">
-							<input name="invitee" type="text" placeholder="Nom de l'invité" id="invitee" autocomplete="off">
+							<input name="invitee" type="text" placeholder="Search for a user to invite" id="invitee" autocomplete="off">
 							<a id="add-invitee" class="btn"><i class="icon-plus"></i></a>
 						</div>
 					</div>
@@ -62,13 +62,13 @@ $all_users = __json_encode(User::find_all_names($user->id));
 					<div id="date-group" class="controls">
 						<input style="width: 80px;" name="date" type="text" placeholder="Date" id="datepicker" autocomplete="off">
 						<select name="from-time" id="from-time" style="width: 80px;">
-							<option value="">De</option>
+							<option value="">From</option>
 							<?php for($i = 0; $i < 24; $i++): ?>
 								<option value="<?php printf("%02d:00:00", $i) ?>"><?php printf("%02d:00", $i) ?></option>
 							<?php endfor; ?>
 						</select>
 						<select name="to-time" id="to-time" style="width: 80px;">
-							<option value="">À</option>
+							<option value="">To</option>
 							<?php for($i = 0; $i < 24; $i++): ?>
 								<option value="<?php printf("%02d:00:00", $i) ?>"><?php printf("%02d:00", $i) ?></option>
 							<?php endfor; ?>
@@ -78,7 +78,7 @@ $all_users = __json_encode(User::find_all_names($user->id));
 				</div><!-- End Date -->
 
 				<div class="form-actions">
-				  	<button type="submit" class="btn btn-primary" id="save-event">Enregistrer</button>
+				  	<button type="submit" class="btn btn-primary" id="save-event">Save</button>
 				  	<img style="margin-left: 10px" class="hide" src="img/ajax-loader.gif" id="loader" alt="Loader">
 				</div>
 
@@ -186,9 +186,9 @@ $all_users = __json_encode(User::find_all_names($user->id));
 		function addDate(date, fromTime, toTime) {
 			var thisDate = { date: date, fromTime: fromTime, toTime: toTime };
 
-			if(! date || ! fromTime || ! toTime) return alert('La date et les heures ne peuvent être vides');
-			if(new Date(date + "00:00:00") < new Date()) return alert('La date ne peut être dans le passé');
-			if(toTime < fromTime) return alert('L\'heure de fin ne peut être plus petit que l\'heure du début');
+			if(! date || ! fromTime || ! toTime) return alert('Invalid Date / Time');
+			if(new Date(date + "00:00:00") < new Date()) return alert('Please select a valid date');
+			if(toTime < fromTime) return alert('Ending time can not be prior to starting time');
 
 			dates.push(thisDate);
 			console.log(dates);
@@ -225,10 +225,10 @@ $all_users = __json_encode(User::find_all_names($user->id));
 		}
 
 		$('#new_event_form').submit(function() {
-			if (! $('#title').val()) return alert('Le titre ne peut être vide.');
-			if (! $('#description').val()) return alert('La description ne peut être vide.');
-			if (! invitees.length) return alert('La liste des invitées ne peut être vide.');
-			if (! dates.length) return alert('La liste des dates ne peut être vide.');
+			if (! $('#title').val()) return alert('Invalid Title.');
+			if (! $('#description').val()) return alert('Invalid description.');
+			if (! invitees.length) return alert('Invited people list can not be empty.');
+			if (! dates.length) return alert('Date can not be empty.');
 
 			$('#save-event').attr('disabled', true);
 			$('#loader').removeClass('hide');
@@ -251,7 +251,7 @@ $all_users = __json_encode(User::find_all_names($user->id));
 				success: function(msg) {
 					if (msg) {
 						$('#new_event_form').parent()
-							.prepend('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>L\'événement a été créer avec succès</div>');
+							.prepend('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>Event Created successfully</div>');
 					}
 					$('#loader').addClass('hide');
 					$('#new_event_form :input').attr('disabled', true);

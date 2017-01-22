@@ -68,11 +68,7 @@ if (!empty($_POST)) {
             </p>-->
                 </div>
 
-                <div class="span6 offset3">
-                    <footer>
-                        <p>&copy; Youssef Belaaziz &amp; Florin Oncica</p>
-                    </footer>
-                </div>
+             
             </div>
             
             
@@ -95,7 +91,7 @@ if (!empty($_POST)) {
         </div>
         <div class="span12">
             <form onsubmit="return false" action="javascript:void(0)" class="form-horizontal pull-right" style="display: none" id="add-user-form">
-                <legend style="text-align: right">Nouvel usager</legend>
+                <legend style="text-align: right">New user</legend>
 
                 <div class="control-group">
                     <label for="email" class="control-label">E-mail</label>
@@ -105,35 +101,35 @@ if (!empty($_POST)) {
                 </div><!-- End email -->
 
                 <div class="control-group">
-                    <label for="firstname" class="control-label">Prénom</label>
+                    <label for="firstname" class="control-label">First Name</label>
                     <div class="controls">
                         <input type="text" class="span2" id="firstname1">
                     </div>
                 </div><!-- End firstname -->
 
                 <div class="control-group">
-                    <label for="lastname" class="control-label">Nom de famille</label>
+                    <label for="lastname" class="control-label">Last Name</label>
                     <div class="controls">
                         <input type="text" class="span2" id="lastname1">
                     </div>
                 </div><!-- End lastname -->
 
                 <div class="control-group">
-                    <label for="password" class="control-label">Mot de passe</label>
+                    <label for="password" class="control-label">Password</label>
                     <div class="controls">
                         <input type="password" class="span2" id="password1">
                     </div>
                 </div><!-- End password -->
 
                 <div class="control-group">
-                    <label for="password2" class="control-label">Confirmation</label>
+                    <label for="password2" class="control-label">Confirm Password</label>
                     <div class="controls">
                         <input type="password" class="span2" id="password2">
                     </div>
                 </div><!-- End password2 -->
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary" id="save-user">Confirmer</button>
+                    <button type="submit" class="btn btn-primary" id="save-user">Sign-Up!</button>
                     <img style="margin-left: 10px" class="hide" src="img/ajax-loader.gif" id="loader" alt="Loader">
                 </div>
             </form>
@@ -173,29 +169,29 @@ if (!empty($_POST)) {
 
             /* verification  e-mail*/
             if(email === "")
-                return alert('Le champs doit email être remplie');
+                return alert('Email is empty.');
              if ( !(/^[a-z0-9]+_?[a-z0-9]+@[a-z]+.[a-z]{2,3}$/.test(email)))
-                return alert('Le format pour le courriel est : myname@domain.com / nom_prenom@domain.com / me23@yahoo.com');
+                return alert('Email format should be as follows : myname@domain.com / nom_prenom@domain.com / me23@yahoo.com');
             
             /* verification prenom */
             if(firstname === "")
-                return alert('Le champs prenom ne doit pas être vide');
+                return alert('First name can not be empty.');
             if(/[0-9]/.test(firstname))
-                return alert('Le prenom ne peut pas contenir des chiffres');
+                return alert('First name can not contain numbers.');
                 
             /* verification nom */
           if(lastname === "")
-                return alert('Le champs nom ne doit pas être vide');
+                return alert('Last name can not be empty');
             if(/[0-9]/.test(lastname))
-                return alert('Le nom ne peut pas contenir des chiffres');
+                return alert('Last name can not contain numbers.');
                 
             /* verification du password */
             if(password === "")
-                return alert('Le mot de passe ne peut pas être vide');
+                return alert('Password can not be empty.');
             if(password2 == "")
-                return alert('la confirmation ne peut pas être vide');
+                return alert('Password confirmation can not be empty');
             if(password != password2)
-                return alert('La confirmation ne correspond pas au mot de passe');
+                return alert('Password confirmation does not match.');
             
             var data = {
                 email: email,

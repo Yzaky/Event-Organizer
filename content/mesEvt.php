@@ -1,4 +1,4 @@
-<h2>Mes evenements:</h2>
+<h2>My events:</h2>
 <div class="container">
 
     <div class="row">
