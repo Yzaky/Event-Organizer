@@ -62,11 +62,7 @@ if (!empty($_POST)) {
                       <a id="add-users" class="btn btn-success pull-right"><i class="icon-plus"></i></a>
                       <a id="hide-add-users-form" class="btn pull-right hide"><i class="icon-minus"></i></a>
                     </form>
-                   <!--  <p class="create-account">
-                <a  id="link-signup" href="newAccount.php">
-                    Creer un nouveau compte
-                </a>
-            </p>-->
+                 
                 </div>
 
              
