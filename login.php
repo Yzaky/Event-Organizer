@@ -20,7 +20,7 @@ if (!empty($_POST)) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>MeetingSet - Authentification</title>
+        <title>Event Organizer - Authentification</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -40,24 +40,25 @@ if (!empty($_POST)) {
 
             <div class="row">
                 <div class="span6 offset3 well">
-                    <h1>Bienvenue à MeetingSet!</h1>
-                    <p>MeetingSet est un logiciel permettant à plusieurs participants d'un événement de spécifier les périodes qui leur convient le mieux, et ainsi de permettre à l'organisateur de satisfaire le plus de gens possible.</p>
+                    <h1>Welcome to Event Organizer!</h1>
+                    <p>Event organizer is a website designed to allow users to participate in many events and also specify their availability.
+                    Users can create events, get invited into ones and a lot more !</p>
                     <?php if ($invalid_login): ?>
                           <div class="alert alert-error">
-                               Courriel ou mot de passe incorrect.
+                               Email or Password are incorrect.
                           </div>
                     <?php endif ?>
 
                     <form method="post" action="login.php" id="connectV">
                       <fieldset>
                         <legend>Authentification</legend>
-                        <label>Courriel</label>
+                        <label>Email</label>
                         <input type="text" name="email" id="email" value="<?php echo (array_key_exists('email', $_POST) ? $_POST['email'] : '') ?>" />
-                        <label>Mot de passe</label>
+                        <label>Password</label>
                         <input type="password" name="password" id="password" />
                       </fieldset>
 
-                      <input class="btn btn-primary" type="submit" value="Connexion" />
+                      <input class="btn btn-primary" type="submit" value="Log-In !" />
                       <a id="add-users" class="btn btn-success pull-right"><i class="icon-plus"></i></a>
                       <a id="hide-add-users-form" class="btn pull-right hide"><i class="icon-minus"></i></a>
                     </form>
